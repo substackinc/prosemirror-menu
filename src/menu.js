@@ -190,7 +190,7 @@ export class Dropdown {
   }
 
   expand(dom, items) {
-    let menuDOM = crel("div", {class: prefix + "-dropdown-menu " + (this.options.class || "")}, items)
+    let menuDOM = crel("div", {class: prefix + "-dropdown-menu " + (this.options.class || "")}, [crel("div", {class: prefix + "-dropdown-menu-head"})].concat(items))
 
     let done = false
     function close() {

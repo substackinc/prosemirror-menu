@@ -5,12 +5,6 @@ import {renderGrouped} from "./menu"
 
 const prefix = "ProseMirror-menubar"
 
-function isIOS() {
-  if (typeof navigator == "undefined") return false
-  let agent = navigator.userAgent
-  return !/Edge\/\d/.test(agent) && /AppleWebKit/.test(agent) && /Mobile\/\w+/.test(agent)
-}
-
 // :: (Object) → Plugin
 // A plugin that will place a menu bar above the editor. Note that
 // this involves wrapping the editor in an additional `<div>`.
@@ -54,7 +48,7 @@ class MenuBarView {
     this.menu.appendChild(dom)
     this.update()
 
-    if (options.floating && !isIOS()) {
+    if (options.floating) {
       this.updateFloat()
       let potentialScrollers = getAllWrapping(this.wrapper)
       this.scrollFunc = (e) => {
